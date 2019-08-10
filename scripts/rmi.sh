@@ -51,7 +51,7 @@ lookForImage() {
 found=$(lookForImage)
 
 if [ $found = "false" ]; then
-  err ""$IMAGE_NAME" not found"
+  err "\"$IMAGE_NAME\" not found"
 fi
 
 printf '%b\n' ""
@@ -62,7 +62,7 @@ docker rmi -f ${IMAGE_NAME}
 found=$(lookForImage)
 
 if [ $found = "true" ]; then
-  err ""$IMAGE_NAME" still found, removing failed."
+  err "\"$IMAGE_NAME\" still found, removing failed."
 fi
 
 success "Image removed successfully."

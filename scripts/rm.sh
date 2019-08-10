@@ -35,11 +35,11 @@ success() {
 # SCRIPT ENTRYPOINT
 #------------------
 
-printf '%b\n' ":: Searching for "$CONTAINER_NAME" docker container..."
-CONTAINER_ID=$(docker ps -aq --filter="name="$CONTAINER_NAME"")
+printf '%b\n' ":: Searching for \"$CONTAINER_NAME\" docker container..."
+CONTAINER_ID=$(docker ps -aq --filter="name=\"$CONTAINER_NAME\"")
 
 if [ -z "$CONTAINER_ID" ]; then
-  err ""$CONTAINER_NAME" container not found"
+  err "\"$CONTAINER_NAME\" container not found"
 fi
 
 # TODO: clarify whether we need to notify when container is running or stopped
@@ -56,15 +56,15 @@ printf '%b\n' ":: Removing container..."
 # remove container
 stopped=$(docker rm ${CONTAINER_NAME})
 if [[ "$?" -ne 0 ]]; then
-  err "Could not remove "$CONTAINER_NAME" container"
+  err "Could not remove \"$CONTAINER_NAME\" container"
 fi
 
-printf '%b\n' ":: Searching for "$CONTAINER_NAME" container..."
-CONTAINER_RETRY=$(docker ps -aq --filter="name="$CONTAINER_NAME"")
+printf '%b\n' ":: Searching for \"$CONTAINER_NAME\" container..."
+CONTAINER_RETRY=$(docker ps -aq --filter="name=\"$CONTAINER_NAME\"")
 
 
 if [ ! -z "$CONTAINER_RETRY" ]; then
-  err ""$CONTAINER_NAME" container removal failed"
+  err "\"$CONTAINER_NAME\" container removal failed"
 fi
 
 success "Removal complete successful."

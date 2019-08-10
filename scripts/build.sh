@@ -33,7 +33,7 @@ success() {
 lookForImage() {
   local IMAGE_LIST=$(docker images | awk '{print $1}')
   local IMAGE_FOUND="false"
-  
+
   for image in $IMAGE_LIST
   do
     if [ $image = $IMAGE_NAME ]; then
@@ -50,7 +50,7 @@ lookForImage() {
 
 found=$(lookForImage)
 if [ $found = "true" ]; then
-  err ""$IMAGE_NAME" does exist, cannot build"
+  err "\"$IMAGE_NAME\" does exist, cannot build"
 fi
 
 printf '%b\n' ""
@@ -60,7 +60,7 @@ docker build -t ${IMAGE_NAME} .
 
 found=$(lookForImage)
 if [ $found = "false" ]; then
-  err ""$IMAGE_NAME" not found, build failed"
+  err "\"$IMAGE_NAME\" not found, build failed"
 fi
 
 success "Image build successfully."
