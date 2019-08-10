@@ -36,8 +36,8 @@ processCrowdProxySettings
 
 # If there are any certificates that should be imported to the JVM Keystore,
 # import them.  Note that KEYSTORE is defined in the Dockerfile
-if [ -d /var/atlassian/crowd/certs ]; then
-  for c in /var/atlassian/crowd/certs/* ; do
+if [ -d ${CROWD_HOME}/certs ]; then
+  for c in ${CROWD_HOME}/certs/* ; do
     echo Found certificate $c, importing to JVM keystore
     keytool -trustcacerts -keystore $KEYSTORE -storepass changeit -noprompt -importcert -file $c || :
   done
