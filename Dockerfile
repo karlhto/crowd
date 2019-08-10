@@ -79,7 +79,7 @@ RUN export MYSQL_DRIVER_VERSION=5.1.44 && \
     chown -R crowd:crowd ${CROWD_HOME} && \
     chown -R crowd:crowd ${CROWD_INSTALL} && \
     # Install Tini Zombie Reaper And Signal Forwarder
-    export TINI_VERSION=0.9.0 && \
+    export TINI_VERSION=0.18.0 && \
     curl -fsSL https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-static -o /bin/tini && \
     chmod +x /bin/tini && \
     # Remove obsolete packages
